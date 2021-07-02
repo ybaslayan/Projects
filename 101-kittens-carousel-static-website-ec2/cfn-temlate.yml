@@ -24,7 +24,6 @@ Resources:
           chmod -R 777 /var/www/html
           cd /var/www/html
           FOLDER="https://raw.githubusercontent.com/ybaslayan/Projects/main/101-kittens-carousel-static-website-ec2/static-web/"
-          cd /var/www/html
           wget $FOLDER/index.html
           wget $FOLDER/cat0.jpg
           wget $FOLDER/cat1.jpg
