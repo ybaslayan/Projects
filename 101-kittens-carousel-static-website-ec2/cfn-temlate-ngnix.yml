@@ -18,16 +18,18 @@ Resources:
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
-          
+
           yum update -y
-          yum install -y httpd
-          chmod -R 777 /var/www/html
-          cd /var/www/html
+          amazon-linux-extras install nginx1.12
+          systemctl start nginx
+          cd /usr/share/nginx/html
+          chmod -R 777 /usr/share/nginx/html
+          rm index.html
           FOLDER="https://raw.githubusercontent.com/ybaslayan/Projects/main/101-kittens-carousel-static-website-ec2/static-web/"
           wget $FOLDER/index.html
           wget $FOLDER/cat0.jpg
           wget $FOLDER/cat1.jpg
           wget $FOLDER/cat2.jpg
           wget $FOLDER/cat3.png
-          systemctl start httpd
-          systemctl enable httpd
+          systemctl restart nginx
+          systemctl enable nginx
